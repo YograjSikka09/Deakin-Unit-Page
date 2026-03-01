@@ -1,19 +1,172 @@
+/* main.css - polished styles for SIT223 / SIT753 page */
 
+/* ========== 0. variables & reset ========== */
+:root{
+  --page-max-width: 1100px;
+  --accent-green: #0b7a4b;   /* header background */
+  --accent-dark: #0b5e3a;
+  --muted-bg: #f7f7f7;
+  --table-head-bg: #f0f8f5;
+  --text: #1f2933;
+  --muted-text: #6b7280;
+  --radius: 8px;
+  --gap: 16px;
+  --content-padding: 18px;
+  --break-sm: 640px;
+  --break-md: 900px;
+  font-synthesis: none;
+}
 
-h1 {
-  font-size: 40px;
-  font-family: Arial
-}
-h2 {
-  font-size: 25px;
-  font-family: Arial
-}
-h3 {
-  font-family: Arial
-}
-p {
-  font-size: 14px;
-  font-family: Arial
+/* very small reset */
+* { box-sizing: border-box; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+html,body { height:100%; margin:0; padding:0; }
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: #ffffff;
+  line-height:1.5;
+  -webkit-tap-highlight-color: transparent;
 }
 
+/* ========== 1. layout container ========== */
+.container {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  padding: var(--content-padding);
+}
 
+/* ========== 2. header (UI Designer) ========== */
+.site-header {
+  background: linear-gradient(180deg, var(--accent-green), var(--accent-dark));
+  color: #fff;
+  padding: 14px var(--content-padding);
+  box-shadow: 0 6px 18px rgba(11,122,75,0.12);
+}
+
+.header-inner {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.deakin-logo{
+  width: 72px;
+  height: auto;
+  display:block;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.04);
+  padding: 4px;
+}
+
+/* title block */
+.site-title h1{
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.05;
+  letter-spacing: -0.2px;
+}
+.site-title .subtitle {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.92);
+  font-weight: 500;
+}
+
+/* ========== 3. headings & text (typography) ========== */
+h1 { font-size: 28px; margin: 18px 0 8px; font-weight:700; }
+h2 { font-size: 20px; margin: 12px 0; color: var(--accent-dark); }
+h3 { font-size: 16px; margin: 10px 0; }
+p { font-size: 15px; margin: 8px 0; color: var(--text); }
+
+/* subtle section card wrapper */
+.section {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 14px;
+  margin: 12px 0 20px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+}
+
+/* ========== 4. unit table (Front-end dev) ========== */
+.unit-table {
+  width: 100%;
+  max-width: 980px;
+  margin: 8px auto 20px;
+  border-collapse: collapse;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(15,23,42,0.03);
+  font-size: 15px;
+}
+
+/* header row */
+.unit-table thead th {
+  background: var(--table-head-bg);
+  color: var(--accent-dark);
+  font-weight: 700;
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+/* body cells */
+.unit-table tbody td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  color: var(--text);
+}
+
+/* zebra & hover */
+.unit-table tbody tr:nth-child(odd) { background: #ffffff; }
+.unit-table tbody tr:nth-child(even) { background: #fbfbfb; }
+.unit-table tbody tr:hover { background: #f1fff6; }
+
+/* small screens — stacked, accessible layout */
+@media (max-width: 640px) {
+  .unit-table { border-radius: 6px; box-shadow: none; }
+  .unit-table thead { display: none; }
+  .unit-table, .unit-table tbody, .unit-table tr, .unit-table td { display: block; width: 100%; }
+  .unit-table tr { margin-bottom: 12px; border: 1px solid rgba(0,0,0,0.03); border-radius: 6px; overflow: hidden; }
+  .unit-table td {
+    position: relative;
+    padding: 12px 14px 12px 120px;
+    text-align: left;
+    border-bottom: none;
+  }
+  .unit-table td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--accent-dark);
+  }
+}
+
+/* ========== 5. links, focus & accessibility ========== */
+a { color: var(--accent-dark); text-decoration: none; }
+a:hover, a:focus { text-decoration: underline; outline: none; }
+
+/* visible focus for keyboard users */
+:focus { outline: 3px solid rgba(11,122,75,0.18); outline-offset: 4px; }
+
+/* small helper note style */
+.note { color: var(--muted-text); font-size: 13px; margin-top:6px; }
+
+/* ========== 6. small devices & print tweaks ========== */
+@media (max-width: var(--break-md)) {
+  .container { padding: 12px; }
+  h1 { font-size: 22px; }
+}
+
+@media print {
+  .site-header, .note, .unit-table tr:hover { display: none; }
+  body { color: #000; background: #fff; }
+  .unit-table, .unit-table td, .unit-table th { border: 1px solid #000; }
+}
+
+/* ========== end of main.css ========= */
