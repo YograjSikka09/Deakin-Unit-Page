@@ -15,8 +15,29 @@ p {
   font-size: 14px;
   font-family: Arial
 }
-div {
-  background-color: rgb(25, 169, 150);
-  text-align: right;
+.site-header {
+   background-color: rgb(25, 169, 150);
+  color: white;
+  padding: 10px 10px;
 }
 
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.deakin-logo {
+  width: 100px;
+}
+
+.site-title h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.subtitle {
+  font-size: 15px;
+}
